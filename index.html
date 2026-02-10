@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ====================================================================
+       CRIFYM - Centro de Rehabilitación Integral Física y Mental
+       Página: Inicio (Home)
+       ==================================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO básico -->
+  <title>CRIFYM — Centro de Rehabilitación Integral Física y Mental | Oaxaca</title>
+  <meta name="description" content="Centro de Rehabilitación Integral Física y Mental con más de 26 años de experiencia. Consulta médica especializada en Medicina Física y Rehabilitación en Oaxaca.">
+  <meta name="keywords" content="rehabilitación, fisioterapia, medicina física, electromiografía, terapia ocupacional, Oaxaca, CRIFYM">
+  <meta name="author" content="CRIFYM">
+
+  <!-- Open Graph (compartir en redes sociales) -->
+  <meta property="og:title" content="CRIFYM — Centro de Rehabilitación Integral Física y Mental">
+  <meta property="og:description" content="Más de 26 años de experiencia en Medicina Física y Rehabilitación en Oaxaca.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.crifym.com">
+  <meta property="og:locale" content="es_MX">
+
+  <!-- Favicon (reemplazar con el favicon real del centro) -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       HEADER / NAVEGACIÓN PRINCIPAL
+       Sticky, con menú de 5 ítems + CTA "Agendar valoración médica"
+       ==================================================================== -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+
+      <!-- Logo e identidad -->
+      <a href="index.html" class="header__logo" aria-label="CRIFYM - Inicio">
+        <!-- Reemplazar con el logo real del centro -->
+        <img src="assets/images/logo-crifym.png" alt="Logo CRIFYM" width="48" height="48">
+        <div class="header__logo-text">
+          CRIFYM
+          <span>Centro de Rehabilitación</span>
+        </div>
+      </a>
+
+      <!-- Navegación desktop (5 ítems máximo) -->
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link nav__link--active">Inicio</a></li>
+          <li><a href="pages/nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="pages/servicios.html" class="nav__link">Servicios</a></li>
+          <li><a href="pages/lesiones.html" class="nav__link">Lesiones / Condiciones</a></li>
+          <li><a href="pages/contacto.html" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botón CTA fijo en header (verde clínico) -->
+      <a href="pages/contacto.html" class="btn-cta btn-sm header__cta">
+        Agendar valoración médica
+      </a>
+
+      <!-- Botón hamburguesa (mobile) -->
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+
+    <!-- Menú mobile (overlay) -->
+    <nav class="nav-mobile" id="nav-mobile" aria-label="Navegación móvil">
+      <ul class="nav-mobile__list">
+        <li><a href="index.html" class="nav-mobile__link nav-mobile__link--active">Inicio</a></li>
+        <li><a href="pages/nosotros.html" class="nav-mobile__link">Nosotros</a></li>
+        <li><a href="pages/servicios.html" class="nav-mobile__link">Servicios</a></li>
+        <li><a href="pages/lesiones.html" class="nav-mobile__link">Lesiones / Condiciones</a></li>
+        <li><a href="pages/contacto.html" class="nav-mobile__link">Contacto</a></li>
+      </ul>
+      <div class="nav-mobile__cta">
+        <a href="pages/contacto.html" class="btn-cta">Agendar valoración médica</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ====================================================================
+       MAIN: Contenido principal de la página de inicio
+       ==================================================================== -->
+  <main role="main">
+
+    <!-- ================================================================
+         HERO: Sección principal / Banner institucional
+         Mensaje claro del centro + CTA visible
+         ================================================================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+
+        <!-- Contenido del hero -->
+        <div class="hero__content">
+          <span class="hero__badge">Más de 26 años de experiencia</span>
+          <h1 id="hero-title" class="hero__title">Centro de Rehabilitación Integral Física y Mental</h1>
+          <p class="hero__description">
+            Consulta médica especializada en Medicina Física y Rehabilitación, atendida por los especialistas
+            en rehabilitación: Dr. Juan José Rosas Sumano y Dr. Víctor Alfonso Velázquez.
+          </p>
+          <div class="hero__actions">
+            <a href="pages/contacto.html" class="btn-cta">
+              <!-- Icono calendario -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Agendar valoración médica
+            </a>
+            <a href="pages/servicios.html" class="btn-secondary">Conocer servicios</a>
+          </div>
+        </div>
+
+        <!-- Imagen del hero -->
+        <div class="hero__image">
+          <!-- Reemplazar con imagen real de las instalaciones del centro -->
+          <img src="assets/images/hero-crifym.jpg" alt="Instalaciones del Centro de Rehabilitación Integral Física y Mental CRIFYM en Oaxaca" width="600" height="450" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         DATOS RÁPIDOS: Teléfono, ubicación, horario, experiencia
+         Tarjetas con íconos para información de acceso rápido
+         ================================================================ -->
+    <section class="quick-info" aria-label="Información rápida de contacto">
+      <div class="container">
+        <div class="quick-info__grid">
+
+          <!-- Teléfono -->
+          <div class="quick-info__card">
+            <div class="quick-info__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="quick-info__label">Teléfono</p>
+              <p class="quick-info__value">Contáctenos</p>
+            </div>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="quick-info__card">
+            <div class="quick-info__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="quick-info__label">Ubicación</p>
+              <p class="quick-info__value">Calle de Reforma #306, Centro, Oaxaca</p>
+            </div>
+          </div>
+
+          <!-- Horario -->
+          <div class="quick-info__card">
+            <div class="quick-info__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="quick-info__label">Horario de atención</p>
+              <p class="quick-info__value">Lun-Vie 08:30-12:30 y 16:00-18:00 · Sáb 08:00-12:00</p>
+            </div>
+          </div>
+
+          <!-- Experiencia -->
+          <div class="quick-info__card">
+            <div class="quick-info__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="quick-info__label">Trayectoria</p>
+              <p class="quick-info__value">Más de 26 años de experiencia</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SERVICIOS: Resumen de los servicios principales
+         Tarjetas con ícono, título y breve descripción
+         ================================================================ -->
+    <section class="services" id="servicios" aria-labelledby="services-title">
+      <div class="container">
+
+        <!-- Encabezado de sección -->
+        <div class="section-header">
+          <span class="section-label">Nuestros Servicios</span>
+          <h2 id="services-title" class="section-title">Atención médica integral y especializada</h2>
+          <p class="section-description">
+            Horario de atención: de lunes a viernes de 08:30 a 12:30 y 16:00 a 18:00 horas, sábados de 08:00 a 12:00 horas.
+          </p>
+        </div>
+
+        <!-- Grid de servicios -->
+        <div class="services__grid">
+
+          <!-- Servicio 1: Valoración médica especializada -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Valoración médica especializada</h3>
+            <p class="service-card__text">Evaluación médica completa en Medicina Física y Rehabilitación.</p>
+          </div>
+
+          <!-- Servicio 2: Rehabilitación pulmonar pediátrica -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Rehabilitación pulmonar pediátrica</h3>
+            <p class="service-card__text">Tratamiento especializado para la rehabilitación respiratoria en pacientes pediátricos.</p>
+          </div>
+
+          <!-- Servicio 3: Electromiografía -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Estudios de electromiografía</h3>
+            <p class="service-card__text">Estudios de electrodiagnóstico para evaluar la función muscular y nerviosa.</p>
+          </div>
+
+          <!-- Servicio 4: Velocidad de conducción nerviosa -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Velocidad de conducción nerviosa</h3>
+            <p class="service-card__text">Estudio para medir la velocidad de los impulsos eléctricos a través de los nervios.</p>
+          </div>
+
+          <!-- Servicio 5: Fisioterapia -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Fisioterapia</h3>
+            <p class="service-card__text">Tratamiento físico para la recuperación funcional del paciente.</p>
+          </div>
+
+          <!-- Servicio 6: Terapia ocupacional -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Terapia ocupacional</h3>
+            <p class="service-card__text">Rehabilitación enfocada en la independencia funcional para las actividades diarias.</p>
+          </div>
+
+          <!-- Servicio 7: Nutrición -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Nutrición</h3>
+            <p class="service-card__text">Asesoría nutricional como parte del proceso de rehabilitación integral.</p>
+          </div>
+
+          <!-- Servicio 8: Psicología -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Psicología</h3>
+            <p class="service-card__text">Atención psicológica para apoyar el bienestar emocional durante la rehabilitación.</p>
+          </div>
+
+          <!-- Servicio 9: Atención hospitalaria y a domicilio -->
+          <div class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">Valoración y terapia a hospital y domicilio</h3>
+            <p class="service-card__text">Servicio de atención médica y terapéutica en hospital o en la comodidad de su hogar.</p>
+          </div>
+
+        </div>
+
+        <!-- Enlace a página completa de servicios -->
+        <div style="text-align: center; margin-top: var(--spacing-2xl);">
+          <a href="pages/servicios.html" class="btn-secondary">Ver todos los servicios</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================
+         NOSOTROS: Breve sección sobre el centro
+         Incluye estadísticas y enlace a página completa
+         ================================================================ -->
+    <section class="about-preview" id="nosotros" aria-labelledby="about-title">
+      <div class="container about-preview__inner">
+
+        <!-- Imagen del centro -->
+        <div class="about-preview__image">
+          <!-- Reemplazar con imagen real de las instalaciones -->
+          <img src="assets/images/instalaciones/fachada-crifym.jpg" alt="Instalaciones del centro CRIFYM en Oaxaca" width="600" height="450" loading="lazy">
+        </div>
+
+        <!-- Contenido -->
+        <div class="about-preview__content">
+          <span class="section-label">Sobre nosotros</span>
+          <h2 id="about-title" class="section-title">Calidad de vida para nuestros pacientes</h2>
+          <p class="about-preview__text">
+            Somos un equipo de médicos especialistas en medicina física y rehabilitación, fisioterapeutas y terapeutas ocupacionales. Teniendo como finalidad proporcionar calidad de vida a niñas, niños, deportistas, personas adultas y de la tercera edad que tengan algún malestar físico.
+          </p>
+          <p class="about-preview__text">
+            Especialistas en medicina física, rehabilitación y electrodiagnóstico con más de 25 años de experiencia brindándole un servicio con calidad y calidez.
+          </p>
+
+          <!-- Estadísticas rápidas -->
+          <div class="about-preview__stats">
+            <div class="stat">
+              <span class="stat__number">26+</span>
+              <span class="stat__label">Años de experiencia</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">9</span>
+              <span class="stat__label">Servicios especializados</span>
+            </div>
+          </div>
+
+          <a href="pages/nosotros.html" class="btn-secondary">Conocer más sobre nosotros</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CTA FINAL: Llamada a la acción antes del footer
+         ================================================================ -->
+    <section class="cta-section" aria-label="Agendar valoración médica">
+      <div class="container">
+        <h2 class="cta-section__title">¿Necesita atención especializada?</h2>
+        <p class="cta-section__text">
+          Estamos listos para ayudarle. Agende su valoración y reciba atención médica profesional en rehabilitación.
+        </p>
+        <a href="pages/contacto.html" class="btn-cta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Agendar valoración médica
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       FOOTER INSTITUCIONAL
+       Información de contacto, menú rápido, redes sociales
+       ==================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Columna 1: Identidad institucional -->
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="assets/images/logo-crifym.png" alt="Logo CRIFYM" width="40" height="40">
+            <span class="footer__logo-name">CRIFYM</span>
+          </div>
+          <p class="footer__about">
+            Centro de Rehabilitación Integral Física y Mental. Más de 26 años de experiencia ofreciendo consulta médica especializada en Medicina Física y Rehabilitación en Oaxaca.
+          </p>
+          <!-- Redes sociales -->
+          <div class="footer__social">
+            <a href="https://www.facebook.com/crifym" class="footer__social-link" aria-label="Visitar Facebook de CRIFYM" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Menú rápido -->
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links">
+            <li><a href="index.html" class="footer__link">Inicio</a></li>
+            <li><a href="pages/nosotros.html" class="footer__link">Nosotros</a></li>
+            <li><a href="pages/servicios.html" class="footer__link">Servicios</a></li>
+            <li><a href="pages/lesiones.html" class="footer__link">Lesiones / Condiciones</a></li>
+            <li><a href="pages/contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Servicios principales -->
+        <div>
+          <h3 class="footer__col-title">Servicios</h3>
+          <ul class="footer__links">
+            <li><a href="pages/servicios.html" class="footer__link">Valoración médica</a></li>
+            <li><a href="pages/servicios.html" class="footer__link">Fisioterapia</a></li>
+            <li><a href="pages/servicios.html" class="footer__link">Electromiografía</a></li>
+            <li><a href="pages/servicios.html" class="footer__link">Terapia ocupacional</a></li>
+            <li><a href="pages/servicios.html" class="footer__link">Atención a domicilio</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Contacto -->
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+
+          <!-- Dirección -->
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Calle de Reforma #306 entre Abasolo y Murguía, Col. Oaxaca Centro, 68000, Oaxaca de Juárez, Oaxaca.</span>
+          </div>
+
+          <!-- Horario -->
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Lun-Vie: 08:30 - 12:30 y 16:00 - 18:00<br>Sáb: 08:00 - 12:00</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Línea inferior: copyright -->
+      <div class="footer__bottom">
+        <p>&copy; <span id="current-year"></span> CRIFYM — Centro de Rehabilitación Integral Física y Mental. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript principal -->
+  <script src="js/main.js"></script>
+</body>
+</html>

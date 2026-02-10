@@ -1,0 +1,1009 @@
+/* ==========================================================================
+   CRIFYM - Centro de Rehabilitación Integral Física y Mental
+   Hoja de estilos principal
+   Stack: CSS3 moderno (Flexbox + Grid) | Mobile-first
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES CSS (Paleta oficial + Tipografía + Espaciado)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colores oficiales */
+  --color-primary: #0B3C5D;         /* Azul clínico principal */
+  --color-primary-dark: #082c45;    /* Azul oscuro (hover, footer) */
+  --color-primary-light: #E6F0F7;   /* Azul claro (fondos) */
+  --color-white: #FFFFFF;           /* Blanco */
+  --color-gray: #6B7280;           /* Gris médico (texto secundario) */
+  --color-gray-accessible: #4B5563; /* Gris accesible (texto en fondos claros no blancos) */
+  --color-gray-light: #F3F4F6;     /* Gris muy claro (bordes, separadores) */
+  --color-cta: #1F9D55;            /* Verde clínico (SOLO para botones CTA) */
+  --color-cta-hover: #178a49;      /* Verde oscuro (hover en CTA) */
+  --color-text: #1F2937;           /* Texto principal oscuro */
+
+  /* Tipografía */
+  --font-family: 'Inter', sans-serif;
+  --font-size-base: 1rem;          /* 16px */
+  --font-size-sm: 0.875rem;        /* 14px */
+  --font-size-lg: 1.125rem;        /* 18px */
+  --font-size-xl: 1.25rem;         /* 20px */
+  --font-size-2xl: 1.5rem;         /* 24px */
+  --font-size-3xl: 2rem;           /* 32px */
+  --font-size-4xl: 2.5rem;         /* 40px */
+  --font-size-5xl: 3rem;           /* 48px */
+
+  /* Peso de fuente */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Espaciado */
+  --spacing-xs: 0.25rem;           /* 4px */
+  --spacing-sm: 0.5rem;            /* 8px */
+  --spacing-md: 1rem;              /* 16px */
+  --spacing-lg: 1.5rem;            /* 24px */
+  --spacing-xl: 2rem;              /* 32px */
+  --spacing-2xl: 3rem;             /* 48px */
+  --spacing-3xl: 4rem;             /* 64px */
+  --spacing-4xl: 6rem;             /* 96px */
+
+  /* Contenedor */
+  --container-max: 1200px;
+  --container-padding: 1.5rem;
+
+  /* Bordes y sombras (valores sobrios para estilo clínico institucional) */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Header */
+  --header-height: 80px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET Y BASE
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Espacio para el header sticky */
+body {
+  padding-top: var(--header-height);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. UTILIDADES
+   -------------------------------------------------------------------------- */
+
+/* Contenedor principal - centra el contenido */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Accesibilidad: ocultar visualmente pero mantener para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. TIPOGRAFÍA
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+/* Subtítulo / texto secundario */
+.text-secondary {
+  color: var(--color-gray);
+}
+
+/* Etiqueta superior de sección (ej: "NUESTROS SERVICIOS")
+   Usa azul clínico, NO verde — el verde es exclusivo para botones CTA */
+.section-label {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Título de sección */
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Descripción debajo del título de sección */
+.section-description {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray);
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+/* Centrar textos de sección */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-header .section-description {
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   5. BOTONES
+   -------------------------------------------------------------------------- */
+
+/* Botón CTA principal (verde clínico) */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.875rem 2rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  background-color: var(--color-cta);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-cta:hover {
+  background-color: var(--color-cta-hover);
+  transform: translateY(-1px);
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+}
+
+/* Botón secundario (outline azul) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.875rem 2rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Botón pequeño */
+.btn-sm {
+  padding: 0.625rem 1.25rem;
+  font-size: var(--font-size-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. HEADER / NAVEGACIÓN
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  z-index: 1000;
+  transition: box-shadow var(--transition-normal);
+}
+
+/* Sombra al hacer scroll */
+.header--scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.header__logo img {
+  height: 48px;
+  width: auto;
+}
+
+.header__logo-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.header__logo-text span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray);
+}
+
+/* Navegación */
+.nav {
+  display: none; /* Oculto en mobile, visible en desktop */
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+/* Enlaces de navegación: hover y activo usan azul clínico, NUNCA verde */
+.nav__link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+/* Línea inferior al hacer hover (azul clínico) */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-primary);
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  width: 100%;
+}
+
+/* Botón CTA en header */
+.header__cta {
+  display: none; /* Oculto en mobile */
+}
+
+/* Botón de menú hamburguesa (mobile) */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+}
+
+.menu-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+/* Animación hamburguesa a X */
+.menu-toggle--active .menu-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle--active .menu-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle--active .menu-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú mobile (overlay) */
+.nav-mobile {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: var(--color-white);
+  padding: var(--spacing-xl) var(--container-padding);
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.nav-mobile--open {
+  transform: translateX(0);
+}
+
+.nav-mobile__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Enlaces mobile: hover y activo usan azul clínico, NUNCA verde */
+.nav-mobile__link {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+  transition: color var(--transition-fast);
+}
+
+.nav-mobile__link:hover,
+.nav-mobile__link--active {
+  color: var(--color-primary);
+}
+
+.nav-mobile__cta {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO (Sección principal de inicio)
+   -------------------------------------------------------------------------- */
+.hero {
+  background-color: var(--color-primary-light);
+  padding: var(--spacing-3xl) 0 var(--spacing-4xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.hero__content {
+  text-align: center;
+}
+
+.hero__badge {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  background-color: rgba(11, 60, 93, 0.1);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 50px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.15;
+}
+
+/* Accesibilidad: usa gris accesible (#4B5563) sobre fondo azul claro (#E6F0F7)
+   Contraste: 6.54:1 — cumple WCAG AA para texto normal */
+.hero__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-accessible);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.hero__image {
+  text-align: center;
+}
+
+.hero__image img {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+}
+
+/* --------------------------------------------------------------------------
+   8. DATOS RÁPIDOS (Teléfono, ubicación, experiencia)
+   -------------------------------------------------------------------------- */
+.quick-info {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--color-white);
+  margin-top: calc(-1 * var(--spacing-2xl));
+  position: relative;
+  z-index: 10;
+}
+
+.quick-info__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.quick-info__card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Hover sutil y clínico: movimiento mínimo, sin exageraciones */
+.quick-info__card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.quick-info__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius);
+  color: var(--color-primary);
+}
+
+.quick-info__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.quick-info__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-xs);
+}
+
+.quick-info__value {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN DE SERVICIOS (Resumen en Home)
+   -------------------------------------------------------------------------- */
+.services {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--color-gray-light);
+}
+
+/* Accesibilidad: texto secundario sobre fondo gris claro necesita color más oscuro
+   Contraste de #4B5563 sobre #F3F4F6: 5.83:1 — cumple WCAG AA */
+.services .section-description {
+  color: var(--color-gray-accessible);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.service-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+/* Hover sobrio: elevación mínima, sin exageración */
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-color: var(--color-primary-light);
+}
+
+.service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+}
+
+.service-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.service-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN NOSOTROS (Breve en Home)
+   -------------------------------------------------------------------------- */
+.about-preview {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--color-white);
+}
+
+.about-preview__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.about-preview__image img {
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.about-preview__content {
+  text-align: center;
+}
+
+.about-preview__text {
+  font-size: var(--font-size-base);
+  color: var(--color-gray);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Estadísticas (años de experiencia, etc.) */
+.about-preview__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__number {
+  display: block;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+}
+
+/* --------------------------------------------------------------------------
+   11. CTA FINAL (Llamada a la acción antes del footer)
+   -------------------------------------------------------------------------- */
+.cta-section {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--color-primary);
+  text-align: center;
+}
+
+.cta-section__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-section__text {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-section .btn-cta {
+  font-size: var(--font-size-lg);
+  padding: 1rem 2.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: var(--color-primary-dark);
+  color: rgba(255, 255, 255, 0.8);
+  padding: var(--spacing-3xl) 0 var(--spacing-lg);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer__brand {
+  text-align: center;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.footer__logo-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+}
+
+.footer__about {
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Columna del footer */
+.footer__col-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer__link {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--color-white);
+}
+
+/* Información de contacto en footer */
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Accesibilidad: opacidad mínima 0.65 para iconos decorativos en fondo oscuro */
+.footer__contact-item svg {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Redes sociales */
+.footer__social {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all var(--transition-fast);
+}
+
+/* Hover usa azul clínico, NO verde — el verde es exclusivo para botones CTA */
+.footer__social-link:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Línea inferior del footer (copyright)
+   Accesibilidad: opacidad 0.6 para cumplir contraste mínimo en fondo oscuro */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-lg);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE DESIGN (Mobile-first → Desktop)
+   -------------------------------------------------------------------------- */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  :root {
+    --header-height: 88px;
+  }
+
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* Hero */
+  .hero {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .hero__title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* Datos rápidos */
+  .quick-info__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Servicios */
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About */
+  .about-preview__inner {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+
+  .about-preview__content {
+    text-align: left;
+  }
+
+  /* CTA */
+  .cta-section__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+
+  .footer__brand {
+    text-align: left;
+  }
+
+  .footer__logo {
+    justify-content: flex-start;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  /* Mostrar navegación desktop, ocultar hamburguesa */
+  .nav {
+    display: flex;
+  }
+
+  .header__cta {
+    display: inline-flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  /* Hero en dos columnas */
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero__content {
+    text-align: left;
+  }
+
+  .hero__description {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero__actions {
+    justify-content: flex-start;
+  }
+
+  .hero__title {
+    font-size: var(--font-size-5xl);
+  }
+
+  /* Datos rápidos */
+  .quick-info__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Servicios 3 columnas */
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer 4 columnas */
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+/* Desktop grande (1280px+) */
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: 2rem;
+  }
+}

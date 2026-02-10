@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO básico -->
+  <title>Contacto — CRIFYM | Centro de Rehabilitación Integral Física y Mental</title>
+  <meta name="description" content="Contáctenos para agendar su valoración médica. CRIFYM, Calle de Reforma #306, Centro, Oaxaca.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contacto — CRIFYM">
+  <meta property="og:description" content="Agende su valoración médica en CRIFYM. Calle de Reforma #306, Oaxaca Centro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.crifym.com/contacto">
+  <meta property="og:locale" content="es_MX">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Estilos específicos del formulario de contacto -->
+  <style>
+    /* Formulario de contacto */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .contact-form {
+      background-color: var(--color-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      color: var(--color-text);
+      background-color: var(--color-white);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--border-radius);
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(11, 60, 93, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Estado de error en campos */
+    .form-field--error {
+      border-color: #DC2626 !important;
+    }
+
+    .form-error {
+      display: block;
+      font-size: var(--font-size-sm);
+      color: #DC2626;
+      margin-top: var(--spacing-xs);
+    }
+
+    /* Mensaje de éxito */
+    .form-success {
+      text-align: center;
+      padding: var(--spacing-2xl);
+    }
+
+    .form-success svg {
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .form-success h3 {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Información de contacto lateral */
+    .contact-info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
+      background-color: var(--color-white);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .contact-info-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background-color: var(--color-primary-light);
+      border-radius: var(--border-radius);
+      color: var(--color-primary);
+    }
+
+    .contact-info-card__icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-info-card__label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .contact-info-card__value {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-primary);
+      margin-bottom: 0;
+    }
+
+    .contact-info-card__value a {
+      color: var(--color-primary);
+    }
+
+    .contact-info-card__value a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mapa */
+    .contact-map {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--border-radius-lg);
+      border: none;
+      margin-top: var(--spacing-lg);
+    }
+
+    /* Enlaces externos */
+    .contact-external-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-map {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====================================================================
+       HEADER / NAVEGACIÓN PRINCIPAL
+       ==================================================================== -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__logo" aria-label="CRIFYM - Inicio">
+        <img src="../assets/images/logo-crifym.png" alt="Logo CRIFYM" width="48" height="48">
+        <div class="header__logo-text">
+          CRIFYM
+          <span>Centro de Rehabilitación</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="../index.html" class="nav__link">Inicio</a></li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="servicios.html" class="nav__link">Servicios</a></li>
+          <li><a href="lesiones.html" class="nav__link">Lesiones / Condiciones</a></li>
+          <li><a href="contacto.html" class="nav__link nav__link--active">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a href="contacto.html" class="btn-cta btn-sm header__cta">
+        Agendar valoración médica
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile" aria-label="Navegación móvil">
+      <ul class="nav-mobile__list">
+        <li><a href="../index.html" class="nav-mobile__link">Inicio</a></li>
+        <li><a href="nosotros.html" class="nav-mobile__link">Nosotros</a></li>
+        <li><a href="servicios.html" class="nav-mobile__link">Servicios</a></li>
+        <li><a href="lesiones.html" class="nav-mobile__link">Lesiones / Condiciones</a></li>
+        <li><a href="contacto.html" class="nav-mobile__link nav-mobile__link--active">Contacto</a></li>
+      </ul>
+      <div class="nav-mobile__cta">
+        <a href="contacto.html" class="btn-cta">Agendar valoración médica</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ====================================================================
+       MAIN: Contenido de la página Contacto
+       ==================================================================== -->
+  <main role="main">
+
+    <!-- Hero de página interna -->
+    <section class="hero" style="padding: var(--spacing-2xl) 0;" aria-labelledby="page-title">
+      <div class="container">
+        <div class="hero__content" style="max-width: 700px; margin: 0 auto;">
+          <span class="hero__badge">Contacto</span>
+          <h1 id="page-title" class="hero__title" style="font-size: var(--font-size-3xl);">Agende su valoración médica</h1>
+          <p class="hero__description">
+            Estamos listos para atenderle. Contáctenos para agendar su cita o resolver cualquier duda.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario y datos de contacto -->
+    <section style="padding: var(--spacing-4xl) 0;" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="sr-only">Formulario de contacto e información</h2>
+
+        <div class="contact-grid">
+
+          <!-- Columna izquierda: Formulario -->
+          <div>
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); color: var(--color-primary);">Escríbenos</h3>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Su nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico de contacto</label>
+                <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Pregunta o comentario</label>
+                <textarea id="mensaje" name="mensaje" required placeholder="Escriba su mensaje aquí..."></textarea>
+              </div>
+              <button type="submit" class="btn-cta" style="width: 100%;">Enviar mensaje</button>
+            </form>
+          </div>
+
+          <!-- Columna derecha: Información de contacto -->
+          <div>
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); color: var(--color-primary);">Información de contacto</h3>
+
+            <!-- Dirección -->
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="contact-info-card__label">Dirección</p>
+                <p class="contact-info-card__value">Calle de Reforma #306 entre Abasolo y Murguía, Colonia Oaxaca Centro, 68000, Oaxaca de Juárez, Oaxaca.</p>
+              </div>
+            </div>
+
+            <!-- Horario -->
+            <div class="contact-info-card">
+              <div class="contact-info-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <p class="contact-info-card__label">Horario de atención</p>
+                <p class="contact-info-card__value">Lun-Vie: 08:30 - 12:30 y 16:00 - 18:00<br>Sáb: 08:00 - 12:00</p>
+              </div>
+            </div>
+
+            <!-- Enlaces externos -->
+            <div class="contact-external-links">
+              <a href="https://www.facebook.com/crifym" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Visitar Facebook
+              </a>
+            </div>
+
+            <!-- Mapa de Google Maps -->
+            <iframe
+              class="contact-map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.123456789!2d-96.7265!3d17.0614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCalle+de+Reforma+306%2C+Centro%2C+68000+Oaxaca+de+Ju%C3%A1rez%2C+Oax.!5e0!3m2!1ses!2smx!4v1234567890"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación de CRIFYM en Google Maps">
+            </iframe>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../assets/images/logo-crifym.png" alt="Logo CRIFYM" width="40" height="40">
+            <span class="footer__logo-name">CRIFYM</span>
+          </div>
+          <p class="footer__about">
+            Centro de Rehabilitación Integral Física y Mental. Más de 26 años de experiencia ofreciendo consulta médica especializada en Medicina Física y Rehabilitación en Oaxaca.
+          </p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/crifym" class="footer__social-link" aria-label="Visitar Facebook de CRIFYM" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Navegación</h3>
+          <ul class="footer__links">
+            <li><a href="../index.html" class="footer__link">Inicio</a></li>
+            <li><a href="nosotros.html" class="footer__link">Nosotros</a></li>
+            <li><a href="servicios.html" class="footer__link">Servicios</a></li>
+            <li><a href="lesiones.html" class="footer__link">Lesiones / Condiciones</a></li>
+            <li><a href="contacto.html" class="footer__link">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Servicios</h3>
+          <ul class="footer__links">
+            <li><a href="servicios.html" class="footer__link">Valoración médica</a></li>
+            <li><a href="servicios.html" class="footer__link">Fisioterapia</a></li>
+            <li><a href="servicios.html" class="footer__link">Electromiografía</a></li>
+            <li><a href="servicios.html" class="footer__link">Terapia ocupacional</a></li>
+            <li><a href="servicios.html" class="footer__link">Atención a domicilio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Contacto</h3>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Calle de Reforma #306 entre Abasolo y Murguía, Col. Oaxaca Centro, 68000, Oaxaca de Juárez, Oaxaca.</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Lun-Vie: 08:30 - 12:30 y 16:00 - 18:00<br>Sáb: 08:00 - 12:00</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; <span id="current-year"></span> CRIFYM — Centro de Rehabilitación Integral Física y Mental. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
