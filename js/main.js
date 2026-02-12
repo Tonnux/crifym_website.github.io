@@ -223,3 +223,117 @@ const yearElement = document.getElementById('current-year');
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
+
+/* --------------------------------------------------------------------------
+   9. MODAL AGENDAR VALORACIÓN MÉDICA (página Contacto)
+   Abre modal al hacer clic en el botón; cierre con X, overlay o ESC.
+   Botón WhatsApp deshabilitado hasta que los campos obligatorios estén completos.
+   Al enviar, genera mensaje formal y abre wa.me con el texto codificado.
+   -------------------------------------------------------------------------- */
+var agendarModalOverlay = document.getElementById('agendar-modal-overlay');
+var agendarModal = document.getElementById('agendar-modal');
+var openAgendarBtns = document.querySelectorAll('.js-open-agendar-modal');
+var closeAgendarBtn = document.getElementById('js-close-agendar-modal');
+var agendarForm = document.getElementById('agendar-modal-form');
+var agendarSubmitBtn = document.getElementById('js-agendar-enviar-whatsapp');
+
+var WHATSAPP_NUMBER = '5219511101434';
+
+function openAgendarModal() {
+  if (!agendarModalOverlay) return;
+  agendarModalOverlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  agendarModalOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeAgendarModal() {
+  if (!agendarModalOverlay) return;
+  agendarModalOverlay.classList.remove('is-open');
+  document.body.style.overflow = '';
+  agendarModalOverlay.setAttribute('aria-hidden', 'true');
+}
+
+function isAgendarFormValid() {
+  if (!agendarForm) return false;
+  var nombre = agendarForm.querySelector('#agendar-nombre');
+  var telefono = agendarForm.querySelector('#agendar-telefono');
+  var servicio = agendarForm.querySelector('#agendar-servicio');
+  var fecha = agendarForm.querySelector('#agendar-fecha');
+  var horario = agendarForm.querySelector('#agendar-horario');
+  return nombre && telefono && servicio && fecha && horario &&
+    nombre.value.trim() !== '' &&
+    telefono.value.trim() !== '' &&
+    servicio.value.trim() !== '' &&
+    fecha.value.trim() !== '' &&
+    horario.value.trim() !== '';
+}
+
+function updateAgendarSubmitButton() {
+  if (!agendarSubmitBtn) return;
+  agendarSubmitBtn.disabled = !isAgendarFormValid();
+}
+
+function buildWhatsAppMessage() {
+  if (!agendarForm) return '';
+  var nombre = (agendarForm.querySelector('#agendar-nombre') && agendarForm.querySelector('#agendar-nombre').value.trim()) || '';
+  var telefono = (agendarForm.querySelector('#agendar-telefono') && agendarForm.querySelector('#agendar-telefono').value.trim()) || '';
+  var servicio = (agendarForm.querySelector('#agendar-servicio') && agendarForm.querySelector('#agendar-servicio').value.trim()) || '';
+  var fecha = (agendarForm.querySelector('#agendar-fecha') && agendarForm.querySelector('#agendar-fecha').value.trim()) || '';
+  var horario = (agendarForm.querySelector('#agendar-horario') && agendarForm.querySelector('#agendar-horario').value.trim()) || '';
+  var comentarios = (agendarForm.querySelector('#agendar-comentarios') && agendarForm.querySelector('#agendar-comentarios').value.trim()) || '—';
+
+  return 'Buenas tardes.\n\n' +
+    'Solicito agendar una valoración médica.\n\n' +
+    'Nombre: ' + nombre + '\n' +
+    'Teléfono: ' + telefono + '\n' +
+    'Servicio: ' + servicio + '\n' +
+    'Fecha preferida: ' + fecha + '\n' +
+    'Horario preferido: ' + horario + '\n' +
+    'Comentarios: ' + comentarios + '\n\n' +
+    'Quedo atento a confirmación.';
+}
+
+function sendAgendarViaWhatsApp() {
+  if (!isAgendarFormValid()) return;
+  var message = buildWhatsAppMessage();
+  var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+  window.open(url, '_blank', 'noopener,noreferrer');
+  closeAgendarModal();
+}
+
+openAgendarBtns.forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') e.preventDefault();
+    openAgendarModal();
+    updateAgendarSubmitButton();
+  });
+});
+
+if (closeAgendarBtn) {
+  closeAgendarBtn.addEventListener('click', closeAgendarModal);
+}
+
+if (agendarModalOverlay) {
+  agendarModalOverlay.addEventListener('click', function(e) {
+    if (e.target === agendarModalOverlay) closeAgendarModal();
+  });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && agendarModalOverlay && agendarModalOverlay.classList.contains('is-open')) {
+    closeAgendarModal();
+  }
+});
+
+if (agendarForm) {
+  agendarForm.addEventListener('input', updateAgendarSubmitButton);
+  agendarForm.addEventListener('change', updateAgendarSubmitButton);
+}
+
+if (agendarSubmitBtn) {
+  agendarSubmitBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    sendAgendarViaWhatsApp();
+  });
+}
+

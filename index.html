@@ -62,10 +62,10 @@
         </ul>
       </nav>
 
-      <!-- Botón CTA fijo en header (verde clínico) -->
-      <a href="pages/contacto.html" class="btn-cta btn-sm header__cta">
+      <!-- Botón CTA fijo en header: abre modal de agendar (misma página) -->
+      <button type="button" class="btn-cta btn-sm header__cta js-open-agendar-modal">
         Agendar valoración médica
-      </a>
+      </button>
 
       <!-- Botón hamburguesa (mobile) -->
       <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
@@ -85,7 +85,7 @@
         <li><a href="pages/contacto.html" class="nav-mobile__link">Contacto</a></li>
       </ul>
       <div class="nav-mobile__cta">
-        <a href="pages/contacto.html" class="btn-cta">Agendar valoración médica</a>
+        <button type="button" class="btn-cta js-open-agendar-modal">Agendar valoración médica</button>
       </div>
     </nav>
   </header>
@@ -128,7 +128,7 @@
         <!-- Imagen del hero -->
         <div class="hero__image">
           <!-- Reemplazar con imagen real de las instalaciones del centro -->
-          <img src="img/comunidad.jpg" alt="Instalaciones del Centro de Rehabilitación Integral Física y Mental CRIFYM en Oaxaca" width="600" height="450" loading="eager">
+          <img src="img/fondo_crifym.png" alt="Instalaciones del Centro de Rehabilitación Integral Física y Mental CRIFYM en Oaxaca" width="600" height="450" loading="eager">
         </div>
       </div>
     </section>
@@ -486,7 +486,62 @@
     </div>
   </footer>
 
-  <!-- JavaScript principal -->
+  <!-- Modal: Agendar valoración médica (formulario para WhatsApp) -->
+  <div class="agendar-modal-overlay" id="agendar-modal-overlay" aria-hidden="true">
+    <div class="agendar-modal" id="agendar-modal" role="dialog" aria-labelledby="agendar-modal-title" aria-modal="true">
+      <button type="button" class="agendar-modal__close" id="js-close-agendar-modal" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 id="agendar-modal-title" class="agendar-modal__title">Solicitar valoración médica</h2>
+      <form id="agendar-modal-form" novalidate>
+        <div class="form-group">
+          <label for="agendar-nombre">Nombre completo</label>
+          <input type="text" id="agendar-nombre" name="nombre" required placeholder="Su nombre completo" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="agendar-telefono">Teléfono</label>
+          <input type="tel" id="agendar-telefono" name="telefono" required placeholder="Ej. 951 123 4567" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="agendar-servicio">Servicio</label>
+          <select id="agendar-servicio" name="servicio" required>
+            <option value="">Seleccione un servicio</option>
+            <option value="Valoración médica especializada">Valoración médica especializada</option>
+            <option value="Rehabilitación pulmonar pediátrica">Rehabilitación pulmonar pediátrica</option>
+            <option value="Estudios de electromiografía">Estudios de electromiografía</option>
+            <option value="Velocidad de conducción nerviosa">Velocidad de conducción nerviosa</option>
+            <option value="Fisioterapia">Fisioterapia</option>
+            <option value="Terapia ocupacional">Terapia ocupacional</option>
+            <option value="Nutrición">Nutrición</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Valoración y terapia a hospital y domicilio">Valoración y terapia a hospital y domicilio</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agendar-fecha">Fecha preferida</label>
+          <input type="date" id="agendar-fecha" name="fecha" required>
+        </div>
+        <div class="form-group">
+          <label for="agendar-horario">Horario preferido</label>
+          <select id="agendar-horario" name="horario" required>
+            <option value="">Seleccione horario</option>
+            <option value="08:30 - 10:00">08:30 - 10:00</option>
+            <option value="10:00 - 12:30">10:00 - 12:30</option>
+            <option value="16:00 - 18:00">16:00 - 18:00</option>
+            <option value="Sábado 08:00 - 12:00">Sábado 08:00 - 12:00</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agendar-comentarios">Comentarios <span style="color: var(--color-gray); font-weight: 400;">(opcional)</span></label>
+          <textarea id="agendar-comentarios" name="comentarios" placeholder="Indique si tiene alguna observación o preferencia" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn-cta agendar-modal__submit" id="js-agendar-enviar-whatsapp" disabled>
+          Enviar solicitud por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>

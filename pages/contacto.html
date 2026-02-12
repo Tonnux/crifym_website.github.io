@@ -182,6 +182,7 @@
         height: 350px;
       }
     }
+
   </style>
 </head>
 <body>
@@ -209,9 +210,9 @@
         </ul>
       </nav>
 
-      <a href="contacto.html" class="btn-cta btn-sm header__cta">
+      <button type="button" class="btn-cta btn-sm header__cta js-open-agendar-modal">
         Agendar valoración médica
-      </a>
+      </button>
 
       <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
         <span class="menu-toggle__bar"></span>
@@ -229,7 +230,7 @@
         <li><a href="contacto.html" class="nav-mobile__link nav-mobile__link--active">Contacto</a></li>
       </ul>
       <div class="nav-mobile__cta">
-        <a href="contacto.html" class="btn-cta">Agendar valoración médica</a>
+        <button type="button" class="btn-cta js-open-agendar-modal">Agendar valoración médica</button>
       </div>
     </nav>
   </header>
@@ -261,23 +262,40 @@
 
           <!-- Columna izquierda: Formulario -->
           <div>
-            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); color: var(--color-primary);">Escríbenos</h3>
-            <form id="contact-form" class="contact-form" novalidate>
-              <div class="form-group">
-                <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Su nombre completo">
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-lg); color: var(--color-primary);">
+              Atención y orientación médica
+            </h3>
+          
+            <div class="contact-form">
+          
+              <p style="margin-bottom: var(--spacing-md);">
+                En CRIFYM estamos comprometidos con brindarle atención profesional,
+                ética y personalizada en Medicina Física y Rehabilitación.
+              </p>
+          
+              <p style="margin-bottom: var(--spacing-md);">
+                Si desea información sobre nuestros servicios, horarios de atención
+                o el proceso para agendar una valoración médica, puede comunicarse
+                directamente con nuestro equipo.
+              </p>
+          
+              <p style="margin-bottom: var(--spacing-lg);">
+                Nuestro personal estará atento para orientarle y resolver cualquier
+                duda relacionada con su tratamiento o proceso de rehabilitación.
+              </p>
+          
+              <!-- Imagen institucional -->
+              <div style="margin-top: var(--spacing-lg);">
+                <img 
+                  src="../img/doctor_rosas.jpg" 
+                  alt="Atención médica especializada en CRIFYM"
+                  style="width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);"
+                >
               </div>
-              <div class="form-group">
-                <label for="email">Correo electrónico de contacto</label>
-                <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
-              </div>
-              <div class="form-group">
-                <label for="mensaje">Pregunta o comentario</label>
-                <textarea id="mensaje" name="mensaje" required placeholder="Escriba su mensaje aquí..."></textarea>
-              </div>
-              <button type="submit" class="btn-cta" style="width: 100%;">Enviar mensaje</button>
-            </form>
+          
+            </div>
           </div>
+          
 
           <!-- Columna derecha: Información de contacto -->
           <div>
@@ -307,7 +325,7 @@
 
             <!-- Enlaces externos -->
             <div class="contact-external-links">
-              <a href="https://www.facebook.com/crifym" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/p/Centro-de-Rehabilitaci%25C3%25B3n-Integral-F%25C3%25ADsica-y-Mental-100063717575120/" class="btn-secondary" target="_blank" rel="noopener noreferrer">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 Visitar Facebook
               </a>
@@ -322,6 +340,12 @@
               referrerpolicy="no-referrer-when-downgrade"
               title="Ubicación de CRIFYM en Google Maps">
             </iframe>
+            
+            <!-- Botón para abrir modal de agendar valoración médica -->
+            <button type="button" class="btn-cta js-open-agendar-modal" style="width: 100%; margin-top: var(--spacing-xl);">
+              Agendar valoración médica
+            </button>
+
 
           </div>
         </div>
@@ -387,6 +411,63 @@
       </div>
     </div>
   </footer>
+
+  <!-- Modal: Agendar valoración médica (formulario para WhatsApp) -->
+  <div class="agendar-modal-overlay" id="agendar-modal-overlay" aria-hidden="true">
+    <div class="agendar-modal" id="agendar-modal" role="dialog" aria-labelledby="agendar-modal-title" aria-modal="true">
+      <button type="button" class="agendar-modal__close" id="js-close-agendar-modal" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 id="agendar-modal-title" class="agendar-modal__title">Solicitar valoración médica</h2>
+
+      <form id="agendar-modal-form" novalidate>
+        <div class="form-group">
+          <label for="agendar-nombre">Nombre completo</label>
+          <input type="text" id="agendar-nombre" name="nombre" required placeholder="Su nombre completo" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="agendar-telefono">Teléfono</label>
+          <input type="tel" id="agendar-telefono" name="telefono" required placeholder="Ej. 951 123 4567" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="agendar-servicio">Servicio</label>
+          <select id="agendar-servicio" name="servicio" required>
+            <option value="">Seleccione un servicio</option>
+            <option value="Valoración médica especializada">Valoración médica especializada</option>
+            <option value="Rehabilitación pulmonar pediátrica">Rehabilitación pulmonar pediátrica</option>
+            <option value="Estudios de electromiografía">Estudios de electromiografía</option>
+            <option value="Velocidad de conducción nerviosa">Velocidad de conducción nerviosa</option>
+            <option value="Fisioterapia">Fisioterapia</option>
+            <option value="Terapia ocupacional">Terapia ocupacional</option>
+            <option value="Nutrición">Nutrición</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Valoración y terapia a hospital y domicilio">Valoración y terapia a hospital y domicilio</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agendar-fecha">Fecha preferida</label>
+          <input type="date" id="agendar-fecha" name="fecha" required>
+        </div>
+        <div class="form-group">
+          <label for="agendar-horario">Horario preferido</label>
+          <select id="agendar-horario" name="horario" required>
+            <option value="">Seleccione horario</option>
+            <option value="08:30 - 10:00">08:30 - 10:00</option>
+            <option value="10:00 - 12:30">10:00 - 12:30</option>
+            <option value="16:00 - 18:00">16:00 - 18:00</option>
+            <option value="Sábado 08:00 - 12:00">Sábado 08:00 - 12:00</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agendar-comentarios">Comentarios <span style="color: var(--color-gray); font-weight: 400;">(opcional)</span></label>
+          <textarea id="agendar-comentarios" name="comentarios" placeholder="Indique si tiene alguna observación o preferencia" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn-cta agendar-modal__submit" id="js-agendar-enviar-whatsapp" disabled>
+          Enviar solicitud por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
 
   <script src="../js/main.js"></script>
 </body>

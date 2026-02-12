@@ -1007,3 +1007,127 @@ p {
     --container-padding: 2rem;
   }
 }
+
+/* --------------------------------------------------------------------------
+   14. MODAL AGENDAR VALORACIÓN MÉDICA (global, usado en todas las páginas)
+   Overlay + ventana centrada; cierre con X / click fuera / ESC
+   -------------------------------------------------------------------------- */
+.agendar-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 60, 93, 0.6);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.agendar-modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.agendar-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+}
+
+.agendar-modal__close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-gray);
+  border-radius: var(--border-radius);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.agendar-modal__close:hover {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.agendar-modal__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.agendar-modal__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-right: 40px;
+}
+
+.agendar-modal .form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.agendar-modal .form-group label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.agendar-modal .form-group input,
+.agendar-modal .form-group select,
+.agendar-modal .form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-fast);
+}
+
+.agendar-modal .form-group input:focus,
+.agendar-modal .form-group select:focus,
+.agendar-modal .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(11, 60, 93, 0.1);
+}
+
+.agendar-modal .form-group select {
+  cursor: pointer;
+}
+
+.agendar-modal .form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.agendar-modal__submit {
+  width: 100%;
+  margin-top: var(--spacing-lg);
+}
+
+.agendar-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
