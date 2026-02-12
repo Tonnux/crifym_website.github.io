@@ -273,6 +273,85 @@ function updateAgendarSubmitButton() {
   agendarSubmitBtn.disabled = !isAgendarFormValid();
 }
 
+/* Opciones de horario por tipo de día (Lun-Vie 8:00-20:00, Sáb 8:00-12:00, Dom cerrado) */
+var HORARIO_OPCIONES = {
+  weekdays: [
+    'Lunes a Viernes — 08:00 a.m. - 09:00 a.m.',
+    'Lunes a Viernes — 09:00 a.m. - 10:00 a.m.',
+    'Lunes a Viernes — 10:00 a.m. - 11:00 a.m.',
+    'Lunes a Viernes — 11:00 a.m. - 12:00 p.m.',
+    'Lunes a Viernes — 12:00 p.m. - 01:00 p.m.',
+    'Lunes a Viernes — 01:00 p.m. - 02:00 p.m.',
+    'Lunes a Viernes — 02:00 p.m. - 03:00 p.m.',
+    'Lunes a Viernes — 03:00 p.m. - 04:00 p.m.',
+    'Lunes a Viernes — 04:00 p.m. - 05:00 p.m.',
+    'Lunes a Viernes — 05:00 p.m. - 06:00 p.m.',
+    'Lunes a Viernes — 06:00 p.m. - 07:00 p.m.',
+    'Lunes a Viernes — 07:00 p.m. - 08:00 p.m.'
+  ],
+  saturday: [
+    'Sábado — 08:00 a.m. - 09:00 a.m.',
+    'Sábado — 09:00 a.m. - 10:00 a.m.',
+    'Sábado — 10:00 a.m. - 11:00 a.m.',
+    'Sábado — 11:00 a.m. - 12:00 p.m.'
+  ]
+};
+
+/**
+ * Actualiza las opciones del select "Horario preferido" según la fecha elegida.
+ * Lun-Vie: bloques de 1 h de 8:00 a 20:00. Sáb: 8:00 a 12:00. Dom: cerrado.
+ */
+function updateHorarioOptionsByDate() {
+  var fechaInput = agendarForm && agendarForm.querySelector('#agendar-fecha');
+  var horarioSelect = agendarForm && agendarForm.querySelector('#agendar-horario');
+  if (!fechaInput || !horarioSelect) return;
+
+  var fechaValue = fechaInput.value.trim();
+  horarioSelect.innerHTML = '';
+
+  var placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Seleccionar horario';
+  horarioSelect.appendChild(placeholder);
+
+  if (!fechaValue) {
+    /* Sin fecha: solo placeholder; el usuario debe elegir fecha primero */
+    return;
+  }
+
+  /* getDay(): 0 = Domingo, 1 = Lunes, ..., 6 = Sábado */
+  var d = new Date(fechaValue + 'T12:00:00');
+  var day = d.getDay();
+
+  if (day === 0) {
+    /* Domingo: cerrado, sin opciones seleccionables */
+    var cerrado = document.createElement('option');
+    cerrado.value = '';
+    cerrado.textContent = 'Domingo — Cerrado (sin atención)';
+    cerrado.disabled = true;
+    horarioSelect.appendChild(cerrado);
+    return;
+  }
+
+  if (day === 6) {
+    HORARIO_OPCIONES.saturday.forEach(function(text) {
+      var opt = document.createElement('option');
+      opt.value = text;
+      opt.textContent = text;
+      horarioSelect.appendChild(opt);
+    });
+    return;
+  }
+
+  /* Lunes a Viernes (1-5) */
+  HORARIO_OPCIONES.weekdays.forEach(function(text) {
+    var opt = document.createElement('option');
+    opt.value = text;
+    opt.textContent = text;
+    horarioSelect.appendChild(opt);
+  });
+}
+
 function buildWhatsAppMessage() {
   if (!agendarForm) return '';
   var nombre = (agendarForm.querySelector('#agendar-nombre') && agendarForm.querySelector('#agendar-nombre').value.trim()) || '';
@@ -305,6 +384,7 @@ openAgendarBtns.forEach(function(btn) {
   btn.addEventListener('click', function(e) {
     if (e.target.tagName === 'A') e.preventDefault();
     openAgendarModal();
+    updateHorarioOptionsByDate();
     updateAgendarSubmitButton();
   });
 });
@@ -328,6 +408,17 @@ document.addEventListener('keydown', function(e) {
 if (agendarForm) {
   agendarForm.addEventListener('input', updateAgendarSubmitButton);
   agendarForm.addEventListener('change', updateAgendarSubmitButton);
+
+  /* Al cambiar la fecha, adaptar las opciones de horario al día elegido y limpiar la selección */
+  var fechaInput = agendarForm.querySelector('#agendar-fecha');
+  if (fechaInput) {
+    fechaInput.addEventListener('change', function() {
+      updateHorarioOptionsByDate();
+      var horarioSelect = agendarForm.querySelector('#agendar-horario');
+      if (horarioSelect) horarioSelect.value = '';
+      updateAgendarSubmitButton();
+    });
+  }
 }
 
 if (agendarSubmitBtn) {
