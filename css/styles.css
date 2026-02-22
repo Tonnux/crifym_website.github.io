@@ -819,6 +819,16 @@ p {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Enlace de dirección en footer (ej. Bing Maps) */
+.footer__contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+.footer__contact-item a:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
 /* Accesibilidad: opacidad mínima 0.65 para iconos decorativos en fondo oscuro */
 .footer__contact-item svg {
   width: 18px;

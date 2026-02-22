@@ -6,11 +6,11 @@
 
   <!-- SEO básico -->
   <title>Contacto — CRIFYM | Centro de Rehabilitación Integral Física y Mental</title>
-  <meta name="description" content="Contáctenos para agendar su valoración médica. CRIFYM, Calle de Reforma #306, Centro, Oaxaca.">
+  <meta name="description" content="Contáctenos para agendar su valoración médica. CRIFYM, Calle Sabinos #509-B, Col. Reforma, Oaxaca.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Contacto — CRIFYM">
-  <meta property="og:description" content="Agende su valoración médica en CRIFYM. Calle de Reforma #306, Oaxaca Centro.">
+  <meta property="og:description" content="Agende su valoración médica en CRIFYM. Calle Sabinos #509-B, Col. Reforma, Oaxaca.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.crifym.com/contacto">
   <meta property="og:locale" content="es_MX">
@@ -155,13 +155,13 @@
       text-decoration: underline;
     }
 
-    /* Mapa */
-    .contact-map {
-      width: 100%;
-      height: 300px;
-      border-radius: var(--border-radius-lg);
-      border: none;
+    /* Enlace al mapa (Bing Maps; antes iframe de Google) */
+    .contact-map-link {
+      display: inline-block;
       margin-top: var(--spacing-lg);
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
     }
 
     /* Enlaces externos */
@@ -178,9 +178,6 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .contact-map {
-        height: 350px;
-      }
     }
 
   </style>
@@ -308,7 +305,7 @@
               </div>
               <div>
                 <p class="contact-info-card__label">Dirección</p>
-                <p class="contact-info-card__value">Calle de Reforma #306 entre Abasolo y Murguía, Colonia Oaxaca Centro, 68000, Oaxaca de Juárez, Oaxaca.</p>
+                <p class="contact-info-card__value">Calle Sabinos #509-B, Col. Reforma, 68050, Oaxaca de Juárez, Oaxaca.</p>
               </div>
             </div>
 
@@ -331,15 +328,15 @@
               </a>
             </div>
 
-            <!-- Mapa de Google Maps -->
-            <iframe
-              class="contact-map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.123456789!2d-96.7265!3d17.0614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCalle+de+Reforma+306%2C+Centro%2C+68000+Oaxaca+de+Ju%C3%A1rez%2C+Oax.!5e0!3m2!1ses!2smx!4v1234567890"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Ubicación de CRIFYM en Google Maps">
-            </iframe>
+            <!-- Enlace a Bing Maps (Bing no ofrece iframe embed como Google) -->
+            <a
+              href="https://www.bing.com/maps/search?v=2&pc=FACEBK&mid=8100&mkt=es-MX&fbclid=IwY2xjawQIE6pleHRuA2FlbQIxMABicmlkETI2NDN4Wk9LNTNpMXNPb3Y2c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmCMy2krsFIg8y0HxziKGQnHC0SgLRrN-gTdXG10JpvF24UPbRBS5PQKhB35_aem_vSq50TcO9DJukI0k6h62aw&FORM=FBKPL1&q=Calle+Sabinos+%23509-B++colonia+Reforma%2C+Colonia+Reforma%2C+Mexico%2C+68050&cp=17.077204%7E-96.713354&lvl=16&style=r"
+              class="btn-secondary contact-map-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Ver ubicación de CRIFYM en Bing Maps">
+              Ver ubicación en mapa (Bing Maps)
+            </a>
             
             <!-- Botón para abrir modal de agendar valoración médica -->
             <button type="button" class="btn-cta js-open-agendar-modal" style="width: 100%; margin-top: var(--spacing-xl);">
@@ -398,7 +395,7 @@
           <h3 class="footer__col-title">Contacto</h3>
           <div class="footer__contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Calle de Reforma #306 entre Abasolo y Murguía, Col. Oaxaca Centro, 68000, Oaxaca de Juárez, Oaxaca.</span>
+            <a href="https://www.bing.com/maps/search?v=2&pc=FACEBK&mid=8100&mkt=es-MX&fbclid=IwY2xjawQIE6pleHRuA2FlbQIxMABicmlkETI2NDN4Wk9LNTNpMXNPb3Y2c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHmCMy2krsFIg8y0HxziKGQnHC0SgLRrN-gTdXG10JpvF24UPbRBS5PQKhB35_aem_vSq50TcO9DJukI0k6h62aw&FORM=FBKPL1&q=Calle+Sabinos+%23509-B++colonia+Reforma%2C+Colonia+Reforma%2C+Mexico%2C+68050&cp=17.077204%7E-96.713354&lvl=16&style=r" target="_blank" rel="noopener noreferrer" title="Ver ubicación en Bing Maps">Calle Sabinos #509-B, Col. Reforma, 68050, Oaxaca de Juárez, Oaxaca.</a>
           </div>
           <div class="footer__contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
